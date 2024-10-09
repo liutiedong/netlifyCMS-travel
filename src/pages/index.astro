@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Button } from '../components/ui/button';
+---
+
+<Layout title="Welcome to TravelGuide">
+  <div class="text-center">
+    <h1 class="text-4xl font-bold mb-4">Welcome to TravelGuide</h1>
+    <p class="text-xl mb-8">Discover amazing destinations and travel tips!</p>
+    <Button client:load>
+      <a href="/guides">Explore Guides</a>
+    </Button>
+  </div>
+</Layout>

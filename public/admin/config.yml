@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "guides"
+    label: "Travel Guides"
+    folder: "src/content/guides"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Destination", name: "destination", widget: "string"}
+      - {label: "Best Time to Visit", name: "bestTimeToVisit", widget: "string"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Content", name: "body", widget: "markdown"}

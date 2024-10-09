@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Card, CardHeader, CardTitle, CardDescription } from '../../components/ui/card';
+
+const guides = await getCollection('guides');
+---
+
+<Layout title="Travel Guides">
+  <h1 class="text-3xl font-bold mb-8">Travel Guides</h1>
+  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {guides.map((guide) => (
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            <a href={`/guides/${guide.slug}`} class="hover:underline">
+              {guide.data.title}
+            </a>
+          </CardTitle>
+          <CardDescription>{guide.data.description}</CardDescription>
+        </CardHeader>
+      </Card>
+    ))}
+  </div>
+</Layout>

@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const guideEntries = await getCollection('guides');
+  return guideEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <article class="prose lg:prose-xl mx-auto">
+    <h1>{entry.data.title}</h1>
+    <p class="text-muted-foreground">Destination: {entry.data.destination}</p>
+    <p class="text-muted-foreground">Best Time to Visit: {entry.data.bestTimeToVisit}</p>
+    <Content />
+  </article>
+</Layout>
